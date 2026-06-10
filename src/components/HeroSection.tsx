@@ -10,83 +10,71 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative px-6 pt-24 pb-16">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Badge */}
-        <div
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 transition-all duration-1000 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <span className="w-2 h-2 rounded-full bg-[#00d4ff] animate-pulse" />
-          <span className="text-sm text-white/80 tracking-wider uppercase">
-            AI Agent First • Human Assisted
+<section style={{ minHeight:"100vh", display:"flex", alignItems:"center",
+      justifyContent:"center", position:"relative", padding:"120px 24px 80px", textAlign:"center" }}>
+
+      {/* background orbs */}
+      <div style={{ position:"absolute", inset:0, overflow:"hidden", pointerEvents:"none" }}>
+        <div style={{ position:"absolute", top:"15%", left:"10%", width:500, height:500,
+          borderRadius:"50%", background:`radial-gradient(circle, ${C.cyan}15 0%, transparent 70%)`, filter:"blur(60px)" }} />
+        <div style={{ position:"absolute", bottom:"20%", right:"10%", width:400, height:400,
+          borderRadius:"50%", background:`radial-gradient(circle, ${C.pink}18 0%, transparent 70%)`, filter:"blur(60px)" }} />
+      </div>
+
+      <div style={{ maxWidth:900, position:"relative", zIndex:1 }}>
+
+        <div style={{ ...fadeUp(0), display:"inline-flex", alignItems:"center", gap:8,
+          padding:"8px 18px", borderRadius:50, marginBottom:32,
+          background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.1)" }}>
+          <span style={{ width:8, height:8, borderRadius:"50%", background:C.cyan,
+            display:"inline-block" }} className="anim-pulse" />
+          <span style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.8)", letterSpacing:"0.2em", textTransform:"uppercase" }}>
+            AI Agent First · Human Assisted
           </span>
         </div>
 
-        {/* Main Headline */}
-        <h1
-          className={`text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-8 transition-all duration-1000 delay-100 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <span className="text-white">Bridge the</span>
-          <br />
-          <span className="gradient-text">Digital & Physical</span>
+        <h1 style={{ ...fadeUp(100), fontSize:"clamp(2.8rem, 8vw, 5.5rem)", fontWeight:900,
+          lineHeight:1, marginBottom:28, letterSpacing:"-.02em" }}>
+          <span style={{ color:"#fff" }}>Bridge the</span><br />
+          <span className="gradient-text">Digital &amp; Physical</span>
         </h1>
 
-        {/* Subheadline */}
-        <p
-          className={`text-xl md:text-2xl text-white/60 max-w-3xl mx-auto mb-12 font-light leading-relaxed transition-all duration-1000 delay-200 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          An innovative agency harnessing AR and video to transform how businesses
-          connect with their audiences. Rooted in the UK Midlands,
-          empowering SMEs to scale and thrive.
+        <p style={{ ...fadeUp(200), fontSize:"clamp(1rem,2.5vw,1.25rem)", color:"rgba(255,255,255,0.55)",
+          maxWidth:680, margin:"0 auto 48px", fontWeight:300, lineHeight:1.7 }}>
+          An innovative collective harnessing AR, video, and AI to transform how businesses
+          connect with their audiences. Rooted in the UK Midlands — Haven, RYZN Studios,
+          and Eva Fondufe united to empower SMEs to scale and thrive.
         </p>
 
-        {/* CTA Buttons */}
-        <div
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-1000 delay-300 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <a href="#contact" className="glow-btn text-lg">
-            <span>Start Your Transformation</span>
-          </a>
-          <a href="#services" className="outline-btn text-lg">
-            Explore Services
-          </a>
+        <div style={{ ...fadeUp(300), display:"flex", flexWrap:"wrap", gap:16,
+          justifyContent:"center", marginBottom:72 }}>
+          <a href="#contact" className="glow-btn">Start Your Transformation</a>
+          <a href="#services" className="outline-btn">Explore Services</a>
         </div>
 
-        {/* Stats */}
-        <div
-          className={`grid grid-cols-3 gap-8 max-w-2xl mx-auto transition-all duration-1000 delay-500 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div style={{ ...fadeUp(500), display:"grid", gridTemplateColumns:"repeat(3,1fr)",
+          gap:24, maxWidth:560, margin:"0 auto" }}>
           {[
-            { value: "£250k+", label: "SME Revenue Growth" },
-            { value: "10→20", label: "Team Scaling" },
-            { value: "100%", label: "Midlands Focused" },
-          ].map((stat, index) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-white/50 uppercase tracking-wider">
-                {stat.label}
-              </div>
+            { value:"£250k+", label:"SME Revenue Growth" },
+            { value:"10→20",  label:"Team Scaling" },
+            { value:"3-in-1", label:"Collective Expertise" },
+          ].map(s => (
+            <div key={s.label} style={{ textAlign:"center" }}>
+              <div style={{ fontSize:"clamp(1.6rem,4vw,2.2rem)", fontWeight:800, marginBottom:6 }}
+                className="gradient-text">{s.value}</div>
+              <div style={{ fontSize:"0.7rem", color:"rgba(255,255,255,0.4)", textTransform:"uppercase",
+                letterSpacing:"0.15em" }}>{s.label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2">
-          <div className="w-1 h-3 rounded-full bg-white/40 animate-bounce" />
+      {/* scroll indicator */}
+      <div style={{ position:"absolute", bottom:32, left:"50%", transform:"translateX(-50%)" }}>
+        <div style={{ width:24, height:40, borderRadius:12, border:"2px solid rgba(255,255,255,0.2)",
+          display:"flex", alignItems:"flex-start", justifyContent:"center", padding:6 }}>
+          <div style={{ width:4, height:10, borderRadius:2, background:"rgba(255,255,255,0.35)" }}
+            className="anim-bounce" />
         </div>
       </div>
     </section>

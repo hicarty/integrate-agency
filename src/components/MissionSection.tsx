@@ -47,74 +47,67 @@ export function MissionSection() {
   ];
 
   return (
-    <section id="mission" ref={sectionRef} className="py-32 px-6 relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d0d23] to-transparent" />
+<section id="mission" ref={ref} style={{ padding:"120px 24px", position:"relative",
+      background:`linear-gradient(180deg, transparent, ${C.bg2}, transparent)` }}>
+      <div style={{ maxWidth:1200, margin:"0 auto" }}>
 
-      <div className="max-w-7xl mx-auto relative">
-        {/* Quote Section */}
-        <div
-          className={`text-center mb-24 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
-        >
-          <div className="inline-block mb-8">
-            <div className="w-20 h-20 rounded-full glass mx-auto flex items-center justify-center mb-6">
-              <span className="text-3xl font-bold gradient-text">H</span>
-            </div>
-            <p className="text-sm text-white/50 tracking-wider uppercase">Haven • Founder</p>
+        {/* Founder quote */}
+        <div style={{ textAlign:"center", marginBottom:96,
+          transition:"opacity 1s, transform 1s", opacity:visible?1:0, transform:visible?"translateY(0)":"translateY(48px)" }}>
+          <div style={{ width:72, height:72, borderRadius:"50%", background:"rgba(255,255,255,0.05)",
+            border:"1px solid rgba(255,255,255,0.1)", display:"flex", alignItems:"center",
+            justifyContent:"center", margin:"0 auto 16px" }}>
+            <span style={{ fontSize:"1.8rem", fontWeight:900 }} className="gradient-text">H</span>
           </div>
-
-          <blockquote className="text-2xl md:text-4xl font-light text-white/90 max-w-4xl mx-auto leading-relaxed italic">
-            "I believe the Midlands can lead the next industrial revolution—one powered
-            by AI and AR. My mission is to help every SME in this region
-            <span className="gradient-text not-italic font-semibold"> scale beyond their dreams</span>."
+          <p style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.4)", letterSpacing:"0.2em",
+            textTransform:"uppercase", marginBottom:28 }}>Haven · Founder</p>
+          <blockquote style={{ fontSize:"clamp(1.2rem,3vw,1.9rem)", fontWeight:300,
+            color:"rgba(255,255,255,0.88)", maxWidth:800, margin:"0 auto", lineHeight:1.6,
+            fontStyle:"italic" }}>
+            "I believe the Midlands can lead the next industrial revolution — one powered by AI
+            and AR. My mission is to help every SME in this region&nbsp;
+            <span className="gradient-text" style={{ fontStyle:"normal", fontWeight:700 }}>
+              scale beyond their dreams.
+            </span>"
           </blockquote>
         </div>
 
-        {/* Values Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {values.map((value, index) => (
-            <div
-              key={value.title}
-              className={`glass-card rounded-2xl p-8 transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
-              style={{ transitionDelay: `${300 + index * 150}ms` }}
-            >
-              <div className="flex gap-6">
-                <span className="text-5xl font-bold text-white/10">{value.number}</span>
+        {/* Values grid */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:24 }}>
+          {values.map((v, i) => (
+            <div key={v.number} className="glass-card" style={{ borderRadius:20, padding:32,
+              transition:`opacity .7s ${300 + i*150}ms, transform .7s ${300 + i*150}ms`,
+              opacity:visible?1:0, transform:visible?"translateY(0)":"translateY(48px)" }}>
+              <div style={{ display:"flex", gap:20 }}>
+                <span style={{ fontSize:"2.5rem", fontWeight:900, color:"rgba(255,255,255,0.07)",
+                  lineHeight:1, flexShrink:0 }}>{v.number}</span>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                  <p className="text-white/60 leading-relaxed">{value.description}</p>
+                  <h3 style={{ fontWeight:700, fontSize:"1.05rem", color:"#fff", marginBottom:10 }}>{v.title}</h3>
+                  <p style={{ color:"rgba(255,255,255,0.55)", lineHeight:1.75, fontSize:"0.88rem" }}>{v.description}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* SME Focus Banner */}
-        <div
-          className={`mt-16 glass-card rounded-3xl p-8 md:p-12 text-center transition-all duration-1000 delay-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+        {/* SME banner */}
+        <div className="glass-card" style={{ borderRadius:28, padding:"48px 40px", textAlign:"center",
+          marginTop:56, transition:"opacity 1s .7s, transform 1s .7s",
+          opacity:visible?1:0, transform:visible?"translateY(0)":"translateY(48px)" }}>
+          <h3 style={{ fontSize:"clamp(1.3rem,3vw,2rem)", fontWeight:800, color:"#fff", marginBottom:40 }}>
             Built for <span className="gradient-text">UK Midlands SMEs</span>
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#00d4ff] mb-2">£250k+</div>
-              <p className="text-white/50 text-sm">Starting Revenue Target</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#e040fb] mb-2">10 → 20</div>
-              <p className="text-white/50 text-sm">Team Scaling Journey</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#7c3aed] mb-2">Midlands</div>
-              <p className="text-white/50 text-sm">Our Home & Focus</p>
-            </div>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))", gap:32 }}>
+            {[
+              { value:"£250k+", label:"Starting Revenue Target", color:C.cyan },
+              { value:"10→20",  label:"Team Scaling Journey",    color:C.pink },
+              { value:"Midlands",label:"Our Home & Focus",       color:C.purpleL },
+            ].map(s => (
+              <div key={s.label}>
+                <div style={{ fontSize:"clamp(1.8rem,4vw,2.5rem)", fontWeight:900, color:s.color, marginBottom:8 }}>{s.value}</div>
+                <p style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.4)", textTransform:"uppercase", letterSpacing:"0.12em" }}>{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
